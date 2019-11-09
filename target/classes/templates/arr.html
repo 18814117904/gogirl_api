@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+
+<body >
+
+<button id="getSign1">发送数组1</button>
+<button id="getSign2">发送数组2</button>
+<script>
+$('#getSign1').on('click',function(){
+    $.ajax({
+        url:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxabd5e4915643494a&redirect_uri='+location.href.split('#')[0]+'&response_type=code&scope=snsapi_userinfo&state=4%7Chttp%3A%2F%2F192.168.2.101%3A8084%2F#wechat_redirect',
+        type : "get",
+        data : {},
+        success : function(response) {
+        	debugger;
+		alert(response)
+            
+        }     
+    });         
+});
+$('#getSign2').on('click',function(){
+	var arr =    {
+			id:12,
+    	list:
+      [
+       {
+           id:1,
+           serveId:3,
+           produceName:'哈哈',
+           technicianId:'尹勇',
+           startTime:'2018-10-30 16:00:00',
+           recordType:0,
+           lengthTimeForEndTime:90
+         },
+         {
+           id:1,
+           serveId:3,
+           produceName:'哈哈',
+           technicianId:'尹勇',
+           startTime:'2018-10-30 16:00:00',
+           recordType:0,
+           lengthTimeForEndTime:90
+         }       
+         ]
+	}
+	debugger;
+    $.ajax({
+        url:'http://192.168.2.101/gogirl/redirect/getArr2',
+        type : "get",
+        data : arr,
+        success : function(response) {
+        	debugger;
+		alert(response)
+            
+        }     
+    });         
+});
+</script>
+</body>
+
+</html>

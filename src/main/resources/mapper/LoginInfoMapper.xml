@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bailun.gogirl.dao.LoginInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.bailun.gogirl.bean.LoginInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="redirect_uri" property="redirectUri" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, time, type, redirect_uri
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.bailun.gogirl.bean.LoginInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from login_info
+    where id = #{id,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.bailun.gogirl.bean.LoginInfoKey" >
+    delete from login_info
+    where id = #{id,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.bailun.gogirl.bean.LoginInfo" >
+    insert into login_info (id, time, type, 
+      redirect_uri)
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{type,jdbcType=TINYINT}, 
+      #{redirectUri,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bailun.gogirl.bean.LoginInfo" >
+    insert into login_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="redirectUri != null" >
+        redirect_uri,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="redirectUri != null" >
+        #{redirectUri,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bailun.gogirl.bean.LoginInfo" >
+    update login_info
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="redirectUri != null" >
+        redirect_uri = #{redirectUri,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bailun.gogirl.bean.LoginInfo" >
+    update login_info
+    set type = #{type,jdbcType=TINYINT},
+      redirect_uri = #{redirectUri,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and time = #{time,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

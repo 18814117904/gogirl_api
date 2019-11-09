@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- jdbc连接库jar包路径 -->
+    <classPathEntry location="d://mysql-connector-java-5.1.38.jar" />
+    <!-- 
+        eclipse tool配置
+        Location = E:\Java\apache-maven-3.2.3\bin\mvn.bat
+        Working Direction = ${workspace_loc:/linetoy-common}
+        Arguments = mybatis-generator:generate
+     -->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 去掉注释，一般都会去掉，那个注释真的不敢让人恭维 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- jdbc连接配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://cdb-554jnvol.gz.tencentcdb.com:10105/bailun_bendi" userId="root"
+            password="#7kfnymAM$Y9-Ntf">
+        </jdbcConnection>
+        <!-- 数字字段是否强制使用BigDecimal类 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- entity创建后放在那个项目的哪个包路径上 -->
+        <javaModelGenerator targetPackage="com.bailun.gogirl.bean"
+            targetProject="E:\Workspaces\gogirl\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- dao创建后放在那个项目的哪个包路径上 -->
+        <sqlMapGenerator targetPackage="com.bailun.gogirl.dao"
+            targetProject="E:\Workspaces\gogirl\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- dao的.xml描述sql文件创建后放在那个项目的哪个包路径上 -->
+        <javaClientGenerator type="XMLMAPPER"
+            targetPackage="com.bailun.gogirl.dao" 
+            targetProject="E:\Workspaces\gogirl\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 
+            要生成的表配置，可以多个
+            tableName：表名
+            domainObjectName：指定类名
+        -->
+        <table tableName="gogirl_config" domainObjectName="GogirlConfig" enableCountByExample="false" enableUpdateByExample="false"  
+            enableDeleteByExample="false" enableSelectByExample="false"  
+            selectByExampleQueryId="false"></table>
+           
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,37 @@
+wechat: 
+   appid: wx7d344dc5ffd20745
+   secret: 71fbda40bff334fcce4aca284f788821
+   appid1: wx058b46db3cd0e979
+   secret1: 7f4d1707caf9abaaf0b37aa03e6674f3
+   appid2: wxdfa614160f40492d
+   secret2: cee8748c023b1b97859a047e95ebf14c
+gogirl:
+   path:
+      PICTURE: "file:///usr/local/src/picture/gogirl/"
+   url:
+      GOGIRLSTORE: "http://127.0.0.1:8081/"
+      GOGIRLSERVICE: "http://127.0.0.1:8082/"
+      GOGIRLTECHNICIAN: "http://127.0.0.1:8083/"
+      GOGIRLORDER: "http://127.0.0.1:8084/"
+      GOGIRLUSER: "http://127.0.0.1:8089/"
+      GOGIRLMP: "http://127.0.0.1:8088/"
+      GOGIRLPAYMENT: "http://127.0.0.1:8087/"
+      NGINX: "http://begogirls.com/gogirl/"
+      ERROR_PAGE: "http://127.0.0.1:8090/redirect/error"
+      picturePath: "/usr/local/src/picture/grouppic/"
+server: 
+   port: 8090
+   servlet:
+      context-path: /gogirl
+   tomcat:
+      max-threads: 10
+      basedir: "/usr/local/src/picture/uploadcache"
+spring:
+   datasource:
+      url: jdbc:mysql://cdb-554jnvol.gz.tencentcdb.com:10105/bailun_gogirl?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: "#7kfnymAM$Y9-Ntf"
+      driver-class-name: com.mysql.jdbc.Driver
+   http:
+      multipart:
+         location: "/usr/local/src/picture/uploadcache"
